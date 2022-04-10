@@ -334,8 +334,8 @@
                     <!-- UPDATE COMPILER PLUGIN WHEN WORKING WITH JAVA 11+ -->
                     <!--<version>3.10.1</version>-->
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>1.6</source>
+                        <target>1.6</target>
                     </configuration>
                 </plugin>
 
@@ -415,8 +415,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -702,7 +702,7 @@
                         <configuration>
                             <linkXref>true</linkXref>
                             <minimumTokens>100</minimumTokens>
-                            <targetJdk>1.7</targetJdk>
+                            <targetJdk>1.6</targetJdk>
                         </configuration>
                     </plugin>
                     <plugin>
