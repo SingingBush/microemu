@@ -1,5 +1,19 @@
-/.idea/
+.DS_Store
+
+# Ignore maven build output
 target/
+
+# Ignore all VS Code (Java Plugin) files
+.classpath
+.project
+.settings/
+.vscode/
+
+# Ignore Intellij IDE specific files
+.idea/
+*.iml
+
+
 /microemulator/microemu-javase-applet/applet-debug-example.html
 /microemulator/microemu-javase-applet/applet-test-example.html
 /microemulator/microemu-android/bin/
