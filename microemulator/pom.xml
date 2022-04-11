@@ -145,8 +145,7 @@
         <buildLabel>${project.version}</buildLabel>
         <pyx4meVersion>2.0.3</pyx4meVersion>
         
-        <jourVersion>2.0.3</jourVersion>
-<!--        <jourVersion>2.0.4-SNAPSHOT</jourVersion>-->
+        <jourVersion>2.1.0</jourVersion>
 
         <!-- See OS X profile -->
         <javaRunTimeJar>${java.home}/lib/rt.jar</javaRunTimeJar>
@@ -504,9 +503,15 @@
                 </site>
 
                 <repository>
-                    <id>pyx4j.com-file-release</id>
-                    <url>file:///home/apache/pyx4j-repository/maven2-release</url>
+                    <id>github</id>
+                    <name>GitHub OWNER Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
                 </repository>
+                <snapshotRepository>
+                    <id>github</id>
+                    <name>GitHub OWNER Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
+                </snapshotRepository>
 
             </distributionManagement>
 
@@ -777,4 +782,13 @@
 
     </profiles>
 
+    <repositories>
+        <repository>
+            <id>github-jour</id>
+            <url>https://maven.pkg.github.com/singingbush/jour</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
