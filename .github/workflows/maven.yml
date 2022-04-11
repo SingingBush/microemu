@@ -26,4 +26,4 @@ jobs:
         server-password: ${{ secrets.GITHUB_TOKEN  }}
     - name: Build with Maven
       working-directory: microemulator
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml -P Github-Jour

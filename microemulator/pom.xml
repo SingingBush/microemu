@@ -421,6 +421,22 @@
 
     <profiles>
         <profile>
+            <id>Github-Jour</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>github-jour</id>
+                    <url>https://maven.pkg.github.com/singingbush/jour</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+
+        <profile>
             <id>osx</id>
             <activation>
                 <os>
@@ -501,6 +517,9 @@
             <modules>
                 <module>microemu-webstart</module>
             </modules>
+            <activation>
+                <jdk>[1.6,1.8)</jdk>
+            </activation>
         </profile>
 
 <!--
@@ -709,13 +728,4 @@
 
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>github-jour</id>
-            <url>https://maven.pkg.github.com/singingbush/jour</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
