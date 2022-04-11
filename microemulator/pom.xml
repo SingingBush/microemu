@@ -86,60 +86,6 @@
         <url>http://pyx4j.com/cruisecontrol-public/</url>
     </ciManagement>
 
-    <distributionManagement>
-        <site>
-            <!-- see also profile release below -->
-            <id>m2-site-snapshot</id>
-            <url>file:///home/apache/microemu</url>
-        </site>
-        <!-- see profile release -->
-        <repository>
-            <id>pyx4j.com-file-development</id>
-            <url>file:///home/apache/pyx4j-repository/maven2-snapshot</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>pyx4j.com-file-development</id>
-            <url>file:///home/apache/pyx4j-repository/maven2-snapshot</url>
-        </snapshotRepository>
-
-    </distributionManagement>
-
-<!-- 4snapshot begin { -->
-
-    <repositories>
-        <repository>
-            <id>pyx4j-public-snapshot</id>
-            <url>http://repository.pyx4j.com/maven2-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
-<!-- 4snapshot end } -->
-
-    <pluginRepositories>
-
-<!-- 4snapshot begin { -->
-
-        <pluginRepository>
-            <id>pyx4j-public-snapshot</id>
-            <url>http://repository.pyx4j.com/maven2-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-
-<!-- 4snapshot end } -->
-
-    </pluginRepositories>
 
     <properties>
         <buildLabel>${project.version}</buildLabel>
@@ -495,25 +441,6 @@
                     <value>true</value>
                 </property>
             </activation>
-
-            <distributionManagement>
-                <site>
-                    <id>me2-site-release</id>
-                    <url>file:///home/apache/microemu-release</url>
-                </site>
-
-                <repository>
-                    <id>github</id>
-                    <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
-                </repository>
-                <snapshotRepository>
-                    <id>github</id>
-                    <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
-                </snapshotRepository>
-
-            </distributionManagement>
 
             <modules>
                 <module>microemu-webstart</module>
