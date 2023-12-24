@@ -13,9 +13,9 @@ jobs:
         jdk: ['8', '11', '17', '21']
         #jdk: ['8', '11', '15', '17']
         #os: [ubuntu-latest, windows-latest, macOS-latest]
-        distribution: temurin
+        distribution: [ 'temurin' ]
         include:
-          - { jdk: 7, distribution: liberica }
+          - { jdk: '7', distribution: 'liberica' }
 
     steps:
     - uses: actions/checkout@v4
