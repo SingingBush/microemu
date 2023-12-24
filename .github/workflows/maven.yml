@@ -10,21 +10,28 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        jdk: ['7', '8', '11', '17', '21']
+        jdk: ['8', '11', '17', '21']
         #jdk: ['8', '11', '15', '17']
         #os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up JDK ${{ matrix.jdk }}
       uses: actions/setup-java@v3
       with:
         distribution: temurin
         java-version: ${{ matrix.jdk }}
         cache: 'maven'
-        server-id: github-jour
+        server-id: github
         server-username: 'SingingBush'
         server-password: ${{ secrets.GITHUB_TOKEN  }}
+
     - name: Build with Maven
       working-directory: microemulator
-      run: mvn -B package --file pom.xml -P Github-Jour
+      run: mvn -B package --file pom.xml -P Github-Jour -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml
+      env:
+        USER_NAME: 'SingingBush'
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+        # USER_NAME: ${{ secrets.USER_NAME }}
+        # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
