@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Test with Java ${{ matrix.jdk }}
+    name: Test with Java ${{ matrix.jdk }} ${{ matrix.distribution }}
     #runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
     strategy:
@@ -15,20 +15,22 @@ jobs:
         #os: [ubuntu-latest, windows-latest, macOS-latest]
         distribution: [ 'temurin' ]
         include:
-          - { jdk: '7', distribution: 'liberica' }
+          - { jdk: '7', distribution: 'oracle' }
+          - { jdk: '7', distribution: 'adopt' }
+          # - { jdk: '8', distribution: 'liberica' }
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up JDK ${{ matrix.jdk }}
+    - name: Set up JDK ${{ matrix.jdk }} ${{ matrix.distribution }}
       uses: actions/setup-java@v4
       with:
         distribution: ${{ matrix.distribution }}
         java-version: ${{ matrix.jdk }}
         cache: 'maven'
-        server-id: github
-        server-username: USER_NAME
-        server-password: ACCESS_TOKEN
+        ## server-id: github
+        ## server-username: USER_NAME
+        ## server-password: ACCESS_TOKEN
         # server-username: 'SingingBush'
         # server-password: ${{ secrets.ACCESS_TOKEN  }}
 
