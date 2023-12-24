@@ -421,19 +421,38 @@
 
     <profiles>
         <profile>
-            <id>Github-Jour</id>
+            <id>github</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <repositories>
                 <repository>
-                    <id>github-jour</id>
-                    <url>https://maven.pkg.github.com/singingbush/jour</url>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                </repository>
+                <repository>
+                    <id>github-packages</id>
+                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
                     <snapshots>
                         <enabled>true</enabled>
                     </snapshots>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
                 </repository>
             </repositories>
+            <distributionManagement>
+                <repository>
+                    <id>github-packages</id>
+                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                </repository>
+            </distributionManagement>
         </profile>
 
         <profile>

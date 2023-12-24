@@ -14,10 +14,10 @@ jobs:
         #jdk: ['8', '11', '15', '17']
         #os: [ubuntu-latest, windows-latest, macOS-latest]
         distribution: [ 'temurin' ]
-        include:
-          - { jdk: '7', distribution: 'oracle' }
-          - { jdk: '7', distribution: 'adopt' }
-          # - { jdk: '8', distribution: 'liberica' }
+        #include:
+        #  - { jdk: '8', distribution: 'oracle' }
+        #  - { jdk: '8', distribution: 'adopt' }
+        #  - { jdk: '8', distribution: 'liberica' }
 
     steps:
     - uses: actions/checkout@v4
@@ -28,9 +28,9 @@ jobs:
         distribution: ${{ matrix.distribution }}
         java-version: ${{ matrix.jdk }}
         cache: 'maven'
-        ## server-id: github
-        ## server-username: USER_NAME
-        ## server-password: ACCESS_TOKEN
+        server-id: github
+        server-username: USER_NAME
+        server-password: ACCESS_TOKEN
         # server-username: 'SingingBush'
         # server-password: ${{ secrets.ACCESS_TOKEN  }}
 
