@@ -30,6 +30,10 @@ jobs:
         java-version: ${{ matrix.jdk }}
         cache: 'maven'
 
+    - name: Build Incubator Bytecode
+      working-directory: incubator/bytecode
+      run: mvn -B install --file pom.xml
+
     # todo: create action to download and install JavaME SDK and set WTK_HOME environment variable
     # Windows (8.3.1 is win only) & Ubuntu only
     # https://download.oracle.com/otn/java/javame/8/oracle-jmesdk-8-3-rr-linux-bin.sh

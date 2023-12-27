@@ -13,7 +13,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.microemu</groupId>
     <artifactId>bytecode-asm</artifactId>
     <name>bytecode-asm</name>
     <version>0.0.1</version>
@@ -41,20 +40,20 @@
         <plugins>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.4</source>
-                    <target>1.4</target>
-                </configuration>
             </plugin>
 
             <!-- jar-with-dependencies -->
             <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-assembly-plugin</artifactId>
                <executions>
                    <execution>
                        <phase>package</phase>
-                       <goals><goal>attached</goal></goals>
+                       <goals>
+                           <goal>single</goal>
+                       </goals>
                    </execution>
                </executions>
                <configuration>

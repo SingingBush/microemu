@@ -13,7 +13,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.microemu</groupId>
     <artifactId>bytecode-webstart</artifactId>
     <name>bytecode-webstart</name>
     <version>0.0.1</version>
@@ -56,13 +55,15 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>webstart-maven-plugin</artifactId>
-                <!-- http://mojo.codehaus.org/webstart-maven-plugin-parent/webstart-maven-plugin/howto.html -->
+                <version>1.0-beta-7</version>
+                <!-- https://www.mojohaus.org/webstart/webstart-maven-plugin/ -->
                 <executions>
-                   <execution>
-                      <goals>
-                         <goal>jnlp</goal>
-                      </goals>
-                   </execution>
+                    <execution>
+                        <goals>
+                            <!--<goal>jnlp</goal>-->
+                            <goal>jnlp-single</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <configuration>
                     <!--outputDirectory></outputDirectory--> <!-- not required?? -->
@@ -94,20 +95,21 @@
 
                     <!-- SIGNING -->
                     <!-- defining this will automatically sign the jar and its dependencies, if necessary -->
-                    <sign>
-                        <keystore>${user.home}/.m2/MicroEmulator.keystore</keystore>
-                        <keypass>${MicroEmulator-keystore-pwd}</keypass>  <!-- we need to override passwords easily from the command line. ${keypass} -->
-                        <storepass>${MicroEmulator-keystore-pwd}</storepass> <!-- ${storepass} -->
-                        <alias>MicroEmulatorSignJars</alias>
+                    <!-- todo: consider re-introducing code signing -->
+                    <!--<sign>-->
+                        <!--<keystore>${user.home}/.m2/MicroEmulator.keystore</keystore>-->
+                        <!--<keypass>${MicroEmulator-keystore-pwd}</keypass>-->  <!-- we need to override passwords easily from the command line. ${keypass} -->
+                        <!--<storepass>${MicroEmulator-keystore-pwd}</storepass>--> <!-- ${storepass} -->
+                        <!--<alias>MicroEmulatorSignJars</alias>-->
 
-                        <verify>true</verify>
-                    </sign>
+                        <!--<verify>true</verify>-->
+                    <!--</sign>-->
 
                     <!-- KEYSTORE MANGEMENT -->
-                    <keystore>
-                        <delete>false</delete> <!-- delete the keystore -->
-                        <gen>false</gen>       <!-- optional shortcut to generate the store. -->
-                    </keystore>
+                    <!--<keystore>-->
+                    <!--    <delete>false</delete> --> <!-- delete the keystore -->
+                    <!--    <gen>false</gen> -->      <!-- optional shortcut to generate the store. -->
+                    <!--</keystore>-->
 
                     <verbose>false</verbose>
 
@@ -115,9 +117,10 @@
             </plugin>
 
              <plugin>
+                <!-- Is now org.eclipse.jetty:jetty-maven-plugin -->
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.1</version>
+                <version>6.1.26</version>
                 <configuration>
                     <webAppSourceDirectory>${project.build.directory}/jnlp</webAppSourceDirectory>
                     <webXml>${basedir}/jetty-web.xml</webXml>
