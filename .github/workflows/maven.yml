@@ -41,5 +41,5 @@ jobs:
       working-directory: microemulator
       run: mvn -B package --file pom.xml -P github --settings $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml
       env:
-        USER_NAME: ${{ secrets.USER_NAME }}
+        USER_NAME: ${{ github.repository_owner }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
