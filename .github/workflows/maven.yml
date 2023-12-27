@@ -1,0 +1,45 @@
+name: Maven
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Test with Java ${{ matrix.jdk }} ${{ matrix.distribution }}
+    #runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # ProGuard takes ages
+    strategy:
+      fail-fast: false
+      matrix:
+        # Cannot support JDK > 8 yet due to ProGuard
+        # todo: Get everything building on ['8', '11', '17', '21']
+        jdk: ['8']
+        #os: [ubuntu-latest, windows-latest, macOS-latest]
+        distribution: [ 'temurin' ]
+        include:
+          - { jdk: '8', distribution: 'adopt' }
+          - { jdk: '8', distribution: 'liberica' }
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK ${{ matrix.jdk }} ${{ matrix.distribution }}
+      uses: actions/setup-java@v4
+      with:
+        distribution: ${{ matrix.distribution }}
+        java-version: ${{ matrix.jdk }}
+        cache: 'maven'
+
+    # todo: create action to download and install JavaME SDK and set WTK_HOME environment variable
+    # Windows (8.3.1 is win only) & Ubuntu only
+    # https://download.oracle.com/otn/java/javame/8/oracle-jmesdk-8-3-rr-linux-bin.sh
+    # https://download.oracle.com/otn/java/javame/8/oracle-jmesdk-8-3-1-rr-win-bin.exe
+    # https://download.oracle.com/otn/java/javame/8/oracle-jmesdk-8-0-rr-win32-bin.exe
+    # https://download.oracle.com/otn/java/javame/3.4/oracle-jmesdk-3-4-rr-win32-bin.exe
+
+    - name: Build with Maven
+      working-directory: microemulator
+      run: mvn -B package --file pom.xml -P github --settings $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml
+      env:
+        USER_NAME: ${{ github.repository_owner }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}

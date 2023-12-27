@@ -86,65 +86,13 @@
         <url>http://pyx4j.com/cruisecontrol-public/</url>
     </ciManagement>
 
-    <distributionManagement>
-        <site>
-            <!-- see also profile release below -->
-            <id>m2-site-snapshot</id>
-            <url>file:///home/apache/microemu</url>
-        </site>
-        <!-- see profile release -->
-        <repository>
-            <id>pyx4j.com-file-development</id>
-            <url>file:///home/apache/pyx4j-repository/maven2-snapshot</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>pyx4j.com-file-development</id>
-            <url>file:///home/apache/pyx4j-repository/maven2-snapshot</url>
-        </snapshotRepository>
-
-    </distributionManagement>
-
-<!-- 4snapshot begin { -->
-
-    <repositories>
-        <repository>
-            <id>pyx4j-public-snapshot</id>
-            <url>http://repository.pyx4j.com/maven2-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
-<!-- 4snapshot end } -->
-
-    <pluginRepositories>
-
-<!-- 4snapshot begin { -->
-
-        <pluginRepository>
-            <id>pyx4j-public-snapshot</id>
-            <url>http://repository.pyx4j.com/maven2-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-
-<!-- 4snapshot end } -->
-
-    </pluginRepositories>
 
     <properties>
         <buildLabel>${project.version}</buildLabel>
         <pyx4meVersion>2.0.3</pyx4meVersion>
-        <jourVersion>2.0.4-SNAPSHOT</jourVersion>
+        
+        <jourVersion>2.1.0</jourVersion>
+
         <!-- See OS X profile -->
         <javaRunTimeJar>${java.home}/lib/rt.jar</javaRunTimeJar>
         <javaRunTimeSecurityJar>${java.home}/lib/jsse.jar</javaRunTimeSecurityJar>
@@ -473,6 +421,41 @@
 
     <profiles>
         <profile>
+            <id>github</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                </repository>
+                <repository>
+                    <id>github-packages</id>
+                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                </repository>
+            </repositories>
+            <distributionManagement>
+                <repository>
+                    <id>github-packages</id>
+                    <url>https://maven.pkg.github.com/singingbush/microemu</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
             <id>osx</id>
             <activation>
                 <os>
@@ -493,19 +476,6 @@
                     <value>true</value>
                 </property>
             </activation>
-
-            <distributionManagement>
-                <site>
-                    <id>me2-site-release</id>
-                    <url>file:///home/apache/microemu-release</url>
-                </site>
-
-                <repository>
-                    <id>pyx4j.com-file-release</id>
-                    <url>file:///home/apache/pyx4j-repository/maven2-release</url>
-                </repository>
-
-            </distributionManagement>
 
             <modules>
                 <module>microemu-webstart</module>
@@ -566,6 +536,9 @@
             <modules>
                 <module>microemu-webstart</module>
             </modules>
+            <activation>
+                <jdk>[1.6,1.8)</jdk>
+            </activation>
         </profile>
 
 <!--
