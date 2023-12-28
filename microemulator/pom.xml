@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <description>
-        This is Java 2 Micro Edition (J2ME) CLDC/MIDP Emulator. Allows demonstration MIDlet (MIDP/CLDC) based applications in web browser applet, also can be run as standalone java application.
+        This is Java ME (Micro Edition) CLDC/MIDP Emulator. Allows demonstration MIDlet (MIDP/CLDC) based applications in web browser applet, also can be run as standalone java application.
     </description>
 
     <organization>
@@ -86,19 +86,21 @@
         <url>http://pyx4j.com/cruisecontrol-public/</url>
     </ciManagement>
 
-
     <properties>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.5</maven.compiler.source>
+        <maven.compiler.target>1.5</maven.compiler.target>
+
         <buildLabel>${project.version}</buildLabel>
-        <pyx4meVersion>2.0.3</pyx4meVersion>
+        <pyx4meVersion>2.0.4</pyx4meVersion>
         
-        <jourVersion>2.1.0</jourVersion>
+        <jourVersion>2.1.1-SNAPSHOT</jourVersion>
 
         <!-- See OS X profile -->
         <javaRunTimeJar>${java.home}/lib/rt.jar</javaRunTimeJar>
         <javaRunTimeSecurityJar>${java.home}/lib/jsse.jar</javaRunTimeSecurityJar>
-        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
-
-        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+        <assemblyPluginVersion>3.6.0</assemblyPluginVersion>
     </properties>
 
     <dependencyManagement>
@@ -127,7 +129,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>3.8.1</version>
+                <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
 
@@ -189,9 +191,9 @@
             </roles>
         </developer>
         -->
-   </developers>
+    </developers>
 
-   <contributors>
+    <contributors>
         <contributor>
             <organization>3G Lab</organization>
             <organizationUrl>http://www.3glab.com</organizationUrl>
@@ -278,19 +280,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <!-- UPDATE COMPILER PLUGIN WHEN WORKING WITH JAVA 11+ -->
-                    <!--<version>3.10.1</version>-->
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                    </configuration>
+                    <version>3.12.1</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.1</version>
                     <configuration>
                         <encoding>ISO-8859-1</encoding>
                     </configuration>
@@ -299,19 +295,19 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3.1</version>
+                    <version>3.3.0</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.1</version>
+                    <version>3.2.3</version>
                 </plugin>
 
                 <plugin>
                     <groupId>com.github.wvengen</groupId>
                     <artifactId>proguard-maven-plugin</artifactId>
-                    <version>2.1.0</version>
+                    <version>2.3.1</version>
                     <!-- Can update to <version>2.5.3</version> once Java 8 is minimum -->
                 </plugin>
 
@@ -341,13 +337,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.1</version>
+                    <version>3.0.1</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-eclipse-plugin</artifactId>
-                    <version>2.9</version>
+                    <version>2.10</version>
                 </plugin>
 
                 <plugin>
@@ -363,12 +359,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
@@ -394,6 +387,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>
@@ -635,7 +629,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.4.3</version>
+                        <version>3.2.3</version>
                         <configuration>
                             <forkMode>always</forkMode>
                         </configuration>
@@ -643,7 +637,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>2.6</version>
+                        <version>3.2.3</version>
                         <reportSets>
                             <reportSet>
                                 <reports>
@@ -655,13 +649,13 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-jxr-plugin</artifactId>
-                        <version>2.2</version>
+                        <version>3.3.1</version>
                     </plugin>
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.5</version>
+                        <version>3.6.3</version>
                         <configuration>
                             <quiet>true</quiet>
                             <!-- For Linux 64-bit -->
@@ -672,7 +666,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
-                        <version>2.5</version>
+                        <version>3.21.2</version>
                         <configuration>
                             <linkXref>true</linkXref>
                             <minimumTokens>100</minimumTokens>
@@ -682,18 +676,19 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>jdepend-maven-plugin</artifactId>
-                        <version>2.0-beta-2</version>
+                        <version>2.0</version>
                     </plugin>
                     <plugin>
+                        <!-- todo: change to spotbugs -->
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>findbugs-maven-plugin</artifactId>
-                        <version>2.3.1</version>
+                        <version>2.5.5</version>
                     </plugin>
                     <plugin>
                         <!-- This is TO-DO list -->
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>taglist-maven-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.0.0</version>
                     </plugin>
                     <!--
                     <plugin>
@@ -705,7 +700,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-changes-plugin</artifactId>
-                        <version>2.3</version>
+                        <version>2.12.1</version>
                         <inherited>false</inherited>
                         <reportSets>
                             <reportSet>
@@ -721,7 +716,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-changelog-plugin</artifactId>
-                        <version>2.2</version>
+                        <version>2.3</version>
                         <inherited>false</inherited>
                         <configuration>
                             <basedir>${basedir}</basedir>
