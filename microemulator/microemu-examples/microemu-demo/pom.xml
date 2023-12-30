@@ -46,8 +46,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.3</source>
-                    <target>1.1</target>
                     <compilerArguments>
                         <bootclasspath>${basedir}/../../api/cldcapi11/target/cldcapi11-${project.version}.jar${path.separator}${basedir}/../../api/midpapi20/target/midpapi20-${project.version}.jar</bootclasspath>
                    </compilerArguments>
@@ -90,7 +88,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--wtkHome>${env.WTK_HOME}</wtkHome-->
+                    <!--<wtkHome>${env.WTK_HOME}</wtkHome>-->
                     <useWtkLibs>false</useWtkLibs>
                     <proguard>false</proguard>
                     <obfuscate>false</obfuscate>
@@ -142,6 +140,7 @@
             -->
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>

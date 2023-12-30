@@ -117,6 +117,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>webstart-maven-plugin</artifactId>
+                <version>1.0-beta-7</version>
                 <!-- http://mojo.codehaus.org/webstart-maven-plugin-parent/webstart-maven-plugin/howto.html -->
                 <executions>
                    <execution>

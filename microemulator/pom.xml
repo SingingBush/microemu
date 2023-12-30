@@ -94,7 +94,7 @@
         <buildLabel>${project.version}</buildLabel>
         <pyx4meVersion>2.0.4</pyx4meVersion>
         
-        <jourVersion>2.1.1-SNAPSHOT</jourVersion>
+        <jourVersion>2.1.0</jourVersion>
 
         <!-- See OS X profile -->
         <javaRunTimeJar>${java.home}/lib/rt.jar</javaRunTimeJar>
